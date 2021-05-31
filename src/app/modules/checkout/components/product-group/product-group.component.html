@@ -1,0 +1,44 @@
+<div class="cart-group">
+  <div *ngIf="store" class="cart-group-name text-hover flex al-center">
+    <img height="30" [src]="store.logo">
+    {{store.storeName}}
+  </div>
+  <div *ngIf="cartGroup" class="cart-group-products">
+    <app-cart-row [mode]="'checkout'" *ngFor="let item of cartGroup.cartItems;last as isLast" [class.lastRow]="isLast"
+      [item]="item">
+    </app-cart-row>
+  </div>
+
+  <div nz-row class="cart-group-footer">
+    <div nz-col [nzSpan]="14" class="cart-group-order-notes flex al-center">
+      <div class="notes-content">
+        <div class="notes-area">
+          <div class="discount-content">
+            <form nz-form [formGroup]="couponForm" class="login-form">
+              <nz-form-item [nzGutter]="12">
+                <nz-form-control nzErrorTip="Coupon code is invalid!">
+                  <input class="coupon-input" placeholder="Coupon code" formControlName="couponCode" nz-input
+                    type="text">
+                </nz-form-control>
+                <button class="apply-btn" (click)="useCouponCode()" nz-button nzType="primary" nz-col
+                  [nzSpan]="6">Apply</button>
+              </nz-form-item>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div nz-col [nzSpan]="10" class="cart-group-order-fee">
+      <div class="cart-price">
+        <div class="cart-price-shipping flex jc-space-between al-center">
+          <span class="price_text">Shipping</span>
+          <span class="price_value">{{ shippingFee | currency}}</span>
+        </div>
+        <div *ngIf="promotionInUse" class="cart-price-discount flex jc-space-between al-center">
+          <span class="price_text">Discount </span>
+          <span class="price_value">{{-promotionInUse.discount | currency}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
