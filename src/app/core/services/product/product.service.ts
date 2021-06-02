@@ -61,7 +61,7 @@ export class ProductService {
       params = params.append('storeId', storeId.toString());
     }
     if (top) {
-      params = params.append('top', top.toString());
+      params = params.append('Top', top.toString());
     }
     return this.httpClient.get(`${environment.productServiceUrl}/api/product/best-seller`, { params }).pipe(catchError(error => {
       return of(error.error);
@@ -84,10 +84,12 @@ export class ProductService {
     }));
   }
 
-  searchProductByFullText(pageIndex: number, pageSize: number, keyword: string) {
-    const params = new HttpParams().append('page', (pageIndex - 1).toString())
-      .append('pageSize', pageSize.toString())
-      .append('keyword', keyword);
+  searchProductByFullText(pageIndex: number, pageSize: number, keywords: string[]) {
+    let params = new HttpParams().append('page', (pageIndex - 1).toString())
+      .append('pageSize', pageSize.toString());
+    keywords.forEach(x => {
+      params = params.append('keywords', x);
+    })
     return this.httpClient.get(`${environment.productServiceUrl}/api/product/fulltext-search`, { params }).pipe(catchError(error => {
       return of(error.error);
     }));
