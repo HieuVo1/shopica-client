@@ -68,10 +68,9 @@ export class QuickViewComponent implements OnInit {
     });
 
     this.modalService.openQuickViewEmitted$.subscribe((product) => {
-      console.log(product);
-
       this.product = product;
       this.isVisible = true;
+      this.quantity = 1;
       this.listSize = getListSize(product.productDetails);
       this.listColor = getListColor(product.productDetails);
       this.colorSelected = this.listColor[0];
