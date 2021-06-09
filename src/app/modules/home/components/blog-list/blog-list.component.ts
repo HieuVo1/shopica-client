@@ -22,9 +22,6 @@ export class BlogListComponent implements OnInit {
       300: {
         items: 1
       },
-      400: {
-        items: 1
-      },
       500: {
         items: 2
       },

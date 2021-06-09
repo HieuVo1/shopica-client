@@ -20,10 +20,7 @@ export class ProductDetailImageComponent implements OnInit {
     dots: true,
     dotsData: true,
     responsive: {
-      100: {
-        items: 1
-      },
-      400: {
+      0: {
         items: 1
       },
     },

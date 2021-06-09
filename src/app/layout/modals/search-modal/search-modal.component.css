@@ -34,6 +34,8 @@
 .search-content {
   padding: 30px 20px;
   overflow-y: auto;
+  position: relative;
+  height: 100%;
 }
 
 .item {
@@ -59,6 +61,11 @@
   text-align: center;
   font-size: 15px;
   color: #878787;
+}
+
+.not-fount {
+  text-align: center;
+  font-size: 18px;
 }
 
 @media (max-width: 1200px) {
