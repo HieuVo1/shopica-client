@@ -5,9 +5,11 @@ import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { ProductService } from '@core/services/product/product.service';
 import { Router } from '@angular/router';
 import { NzMessageService } from 'ng-zorro-antd/message';
-import { NzUploadChangeParam } from 'ng-zorro-antd/upload';
+import { NzUploadChangeParam, NzUploadFile } from 'ng-zorro-antd/upload';
 import { debounceTime, distinctUntilChanged, filter, finalize, switchMap, tap } from 'rxjs/operators';
-import { of } from 'rxjs';
+import { Observable, Observer, of } from 'rxjs';
+import { getBase64 } from '@core/helper/form';
+import { environment } from '@env';
 
 @Component({
   selector: 'app-search-modal',
@@ -22,8 +24,10 @@ export class SearchModalComponent implements OnInit {
   pageIndex = 1;
   pageSize = 6;
   keyword: string = '';
+  avatarUrl?: string;
   listProduct: Product[] = [];
   imgAnalyzer: string = "http://52.221.254.26:5000/api/image-analyzer";
+  // imgAnalyzer: string = `${environment.productServiceUrl}/api/upload`;
 
   constructor(
     private readonly formBuilder: FormBuilder,
@@ -41,8 +45,12 @@ export class SearchModalComponent implements OnInit {
         value = value?.trim();
         this.keyword = value;
         if (value) {
-          this.loaderService.showLoader('search')
+          this.loaderService.showLoader('search');
+          this.avatarUrl = '';
           return value;
+        }
+        else {
+          this.listProduct = [];
         }
       }),
       debounceTime(500),
@@ -65,10 +73,32 @@ export class SearchModalComponent implements OnInit {
   }
 
   handleCancel() {
+    this.clearProducts();
+    this.clearSearchText();
+    this.clearImage();
+    this.closeSearchModalEvent.emit();
+  }
+
+  clearProducts() {
+    this.listProduct = [];
+  }
+
+  clearSearchText() {
     this.searchForm.reset();
     this.keyword = '';
-    this.listProduct = [];
-    this.closeSearchModalEvent.emit();
+  }
+
+  clearImage() {
+    this.avatarUrl = '';
+  }
+
+  removeImageSearch() {
+    this.clearImage();
+    this.clearProducts();
+    this.clearSearchText();
+
+    console.log(this.keyword, this.listProduct.length);
+
   }
 
   searchProductFullText(keywords: string[]) {
@@ -91,15 +121,34 @@ export class SearchModalComponent implements OnInit {
   }
 
   handleChange(info: NzUploadChangeParam): void {
-    if (info.file.status !== 'uploading') {
-      console.log(info.file, info.fileList);
+    let id: string;
+    if (info.file.status === 'uploading' && info.type === 'start') {
+      id = this.msg.loading('Action in progress..', { nzDuration: 0 }).messageId;
     }
-    if (info.file.status === 'done') {
+    else if (info.file.status === 'done') {
+      this.msg.remove(id);
       this.msg.success(`${info.file.name} file uploaded successfully`);
+      this.clearSearchText();
       this.searchProductFullText(info.file.response.data);
-
-    } else if (info.file.status === 'error') {
+      getBase64(info.file!.originFileObj!, (img: string) => {
+        this.avatarUrl = img;
+      });
+    }
+    else if (info.file.status === 'error') {
       this.msg.error(`${info.file.name} file upload failed.`);
     }
   }
+
+  beforeUpload = (file: NzUploadFile, _fileList: NzUploadFile[]) => {
+    return new Observable((observer: Observer<boolean>) => {
+      const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/png';
+      if (!isJpgOrPng) {
+        this.msg.error('You can only upload JPG file!');
+        observer.complete();
+        return;
+      }
+      observer.next(isJpgOrPng);
+      observer.complete();
+    });
+  };
 }
