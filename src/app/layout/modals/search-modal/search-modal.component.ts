@@ -135,6 +135,7 @@ export class SearchModalComponent implements OnInit {
       });
     }
     else if (info.file.status === 'error') {
+      this.msg.remove(id);
       this.msg.error(`${info.file.name} file upload failed.`);
     }
   }

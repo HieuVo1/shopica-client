@@ -94,6 +94,7 @@
 
 .background-image {
   display: block;
+  cursor: pointer;
   width: 100%;
   padding-top: 127.571%;
   position: relative;
