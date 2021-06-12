@@ -123,7 +123,7 @@ export class SearchModalComponent implements OnInit {
   handleChange(info: NzUploadChangeParam): void {
     let id: string;
     if (info.file.status === 'uploading' && info.type === 'start') {
-      id = this.msg.loading('Action in progress..', { nzDuration: 0 }).messageId;
+      id = this.msg.loading('Image is loading..', { nzDuration: 0 }).messageId;
     }
     else if (info.file.status === 'done') {
       this.msg.remove(id);

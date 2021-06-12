@@ -22,6 +22,7 @@ export class ProductTrendingComponent implements OnInit {
     dots: false,
     autoHeight: true,
     autoWidth: true,
+    skip_validateItems: true,
     responsive: {
       200: {
         items: 2

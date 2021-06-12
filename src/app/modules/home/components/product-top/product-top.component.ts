@@ -16,11 +16,12 @@ export class ProductBestSellerComponent implements OnInit {
   newArrivalProduct: Product[] = [];
 
   customOptions: OwlOptions = {
-    loop: false,
+    loop: true,
     autoplay: true,
     dots: false,
     autoHeight: true,
     autoWidth: true,
+    skip_validateItems: true,
     responsive: {
       200: {
         items: 1

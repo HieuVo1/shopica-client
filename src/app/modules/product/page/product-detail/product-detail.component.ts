@@ -29,6 +29,7 @@ export class ProductDetailComponent implements OnInit {
     dots: false,
     autoHeight: true,
     autoWidth: true,
+    skip_validateItems: true,
     responsive: {
       200: {
         items: 1

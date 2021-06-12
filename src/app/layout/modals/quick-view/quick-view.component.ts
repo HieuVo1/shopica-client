@@ -42,6 +42,7 @@ export class QuickViewComponent implements OnInit {
     loop: false,
     autoplay: true,
     dots: false,
+    skip_validateItems: true,
     responsive: {
       0: {
         items: 1
