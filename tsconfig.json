@@ -9,7 +9,7 @@
     "experimentalDecorators": true,
     "moduleResolution": "node",
     "importHelpers": true,
-    "target": "es2020",
+    "target": "ES2022",
     "module": "es2020",
     "lib": [
       "es2018",
@@ -32,9 +32,10 @@
       "@layout/*": [
         "app/layout/*"
       ],
-      "@assets/*":[
+      "@assets/*": [
         "assets"
       ]
     },
+    "useDefineForClassFields": false
   }
 }
