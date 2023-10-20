@@ -6,7 +6,7 @@ import { environment } from '@env';
 import { StorageService } from './../../../../core/services/storage/storage.service';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { AuthService } from '@core/services/auth/auth.service';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -16,10 +16,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  loginForm: FormGroup;
+  loginForm: UntypedFormGroup;
   isLoading = false;
   constructor(
-    private readonly formBuilder: FormBuilder,
+    private readonly formBuilder: UntypedFormBuilder,
     private readonly authService: AuthService,
     private readonly messageService: NzMessageService,
     private readonly storageService: StorageService,

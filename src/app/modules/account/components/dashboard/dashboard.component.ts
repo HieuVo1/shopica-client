@@ -1,5 +1,5 @@
 import { ShareService } from './../../../../core/services/share/share.service';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { Router } from '@angular/router';
 import { tap, finalize } from 'rxjs/operators';
@@ -14,12 +14,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
-  updateInfoForm: FormGroup;
+  updateInfoForm: UntypedFormGroup;
   customer: Customer;
   isLoading = false;
 
   constructor(
-    private readonly formBuilder: FormBuilder,
+    private readonly formBuilder: UntypedFormBuilder,
     private readonly authService: AuthService,
     private readonly messageService: NzMessageService,
     private readonly router: Router,

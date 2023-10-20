@@ -1,5 +1,5 @@
 import { NzMessageService } from 'ng-zorro-antd/message';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
 import { CheckoutService } from './../../../../core/services/checkout/checkout.service';
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 
@@ -11,7 +11,7 @@ declare var paypal;
 })
 export class PaymentComponent implements OnInit {
   @ViewChild('paypal', { static: true }) private paypal: ElementRef;
-  paymentMethodForm: FormGroup;
+  paymentMethodForm: UntypedFormGroup;
   showPaypal = false;
   hiddenCash = false;
   subtotal = 0;
@@ -19,7 +19,7 @@ export class PaymentComponent implements OnInit {
   discount = 0;
   transactionId = '';
   constructor(
-    private readonly formBuilder: FormBuilder,
+    private readonly formBuilder: UntypedFormBuilder,
     private readonly checkoutService: CheckoutService,
     private readonly messageService: NzMessageService
   ) { }

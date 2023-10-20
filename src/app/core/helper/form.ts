@@ -1,5 +1,5 @@
-import { FormControl, FormGroup } from '@angular/forms';
-export function validateForm(form: FormGroup) {
+import { FormControl, UntypedFormGroup } from '@angular/forms';
+export function validateForm(form: UntypedFormGroup) {
   for (const i in form.controls) {
     form.controls[i].markAsDirty();
     form.controls[i].updateValueAndValidity();

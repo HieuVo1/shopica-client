@@ -8,7 +8,7 @@ import { LoginMethod } from './../../../core/enum/login-method';
 import { StorageService } from './../../../core/services/storage/storage.service';
 import { AuthService } from './../../../core/services/auth/auth.service';
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { finalize, map, tap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { NzMessageService } from 'ng-zorro-antd/message';
@@ -25,10 +25,10 @@ export class LoginDrawerComponent implements OnInit {
   @Output() openResetPasswordDrawerEvent = new EventEmitter<boolean>();
   isVisible = false;
   isClose: Observable<any>;
-  loginForm: FormGroup;
+  loginForm: UntypedFormGroup;
   isLoading = false;
   constructor(
-    private readonly formBuilder: FormBuilder,
+    private readonly formBuilder: UntypedFormBuilder,
     private readonly authService: AuthService,
     private readonly messageService: NzMessageService,
     private readonly socialAuthService: SocialAuthService,

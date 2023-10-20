@@ -1,5 +1,5 @@
 import { LoaderService } from './../../../shared/modules/loader/loader.service';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { Product } from '@core/model/product/product';
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { ProductService } from '@core/services/product/product.service';
@@ -20,7 +20,7 @@ export class SearchModalComponent implements OnInit {
 
   @Input() isVisible;
   @Output() closeSearchModalEvent = new EventEmitter();
-  searchForm: FormGroup;
+  searchForm: UntypedFormGroup;
   pageIndex = 1;
   pageSize = 6;
   keyword: string = '';
@@ -30,7 +30,7 @@ export class SearchModalComponent implements OnInit {
   // imgAnalyzer: string = `${environment.productServiceUrl}/api/upload`;
 
   constructor(
-    private readonly formBuilder: FormBuilder,
+    private readonly formBuilder: UntypedFormBuilder,
     private readonly productService: ProductService,
     private readonly router: Router,
     private msg: NzMessageService,

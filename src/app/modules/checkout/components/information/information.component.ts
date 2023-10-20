@@ -2,7 +2,7 @@ import { StorageService } from '@core/services/storage/storage.service';
 import { Address } from '@core/model/address/address';
 import { ShippingAddress } from './../../../../core/model/user/shipping-address';
 import { Customer } from '@core/model/user/customer';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
 import { CartItem } from '@core/model/cart/cart-item';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
@@ -20,7 +20,7 @@ import { CheckoutService } from '@core/services/checkout/checkout.service';
   styleUrls: ['./information.component.css']
 })
 export class InformationComponent implements OnInit {
-  orderForm: FormGroup;
+  orderForm: UntypedFormGroup;
   listProvince = [];
   listDistrict = [];
   listWard = [];
@@ -31,7 +31,7 @@ export class InformationComponent implements OnInit {
   wardSelectedId = '-1';
 
   constructor(
-    private readonly formBuilder: FormBuilder,
+    private readonly formBuilder: UntypedFormBuilder,
     private readonly storageService: StorageService,
     private readonly ghnService: GhnService,
     private readonly router: Router,

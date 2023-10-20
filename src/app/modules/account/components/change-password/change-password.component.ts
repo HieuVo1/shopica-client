@@ -5,7 +5,7 @@ import { tap, finalize } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { AuthService } from '@core/services/auth/auth.service';
-import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder, Validators, UntypedFormControl } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { environment } from '@env';
 
@@ -15,12 +15,12 @@ import { environment } from '@env';
   styleUrls: ['./change-password.component.css']
 })
 export class ChangePasswordComponent implements OnInit {
-  changePasswordForm: FormGroup;
+  changePasswordForm: UntypedFormGroup;
   isLoading = false;
   loginMethod: string;
 
   constructor(
-    private readonly formBuilder: FormBuilder,
+    private readonly formBuilder: UntypedFormBuilder,
     private readonly authService: AuthService,
     private readonly messageService: NzMessageService,
     private readonly router: Router,
@@ -46,7 +46,7 @@ export class ChangePasswordComponent implements OnInit {
     });
   }
 
-  confirmationValidator = (control: FormControl) => {
+  confirmationValidator = (control: UntypedFormControl) => {
     if (!control.value) {
       return { required: true };
     }

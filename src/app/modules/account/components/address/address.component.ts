@@ -4,7 +4,7 @@ import { NzMessageService } from 'ng-zorro-antd/message';
 import { AuthService } from '@core/services/auth/auth.service';
 import { GhnService } from '@core/services/ghn/ghn.service';
 import { Router } from '@angular/router';
-import { Validators, FormBuilder, FormGroup } from '@angular/forms';
+import { Validators, UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { Customer } from '@core/model/user/customer';
 import { ShareService } from '@core/services/share/share.service';
@@ -17,7 +17,7 @@ import { combineLatest, forkJoin } from 'rxjs';
 })
 export class AddressComponent implements OnInit {
 
-  addressForm: FormGroup;
+  addressForm: UntypedFormGroup;
   customer: Customer;
   isLoading = false;
   listProvince = [];
@@ -27,7 +27,7 @@ export class AddressComponent implements OnInit {
   wardSelectedId = '0';
 
   constructor(
-    private readonly formBuilder: FormBuilder,
+    private readonly formBuilder: UntypedFormBuilder,
     private readonly authService: AuthService,
     private readonly ghnService: GhnService,
     private readonly messageService: NzMessageService,

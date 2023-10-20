@@ -2,7 +2,7 @@ import { NzMessageService } from 'ng-zorro-antd/message';
 import { tap, finalize } from 'rxjs/operators';
 import { AuthService } from './../../../core/services/auth/auth.service';
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { existEmailValidator } from '@core/directive/exist-email.directive';
 
 @Component({
@@ -14,11 +14,11 @@ export class RegisterDrawerComponent implements OnInit {
   @Input() isOpenRegisterDrawer = false;
   @Output() closeRegisterDrawerEvent = new EventEmitter<boolean>();
   @Output() openLoginDrawerEvent = new EventEmitter<boolean>();
-  registerForm: FormGroup;
+  registerForm: UntypedFormGroup;
   a: string;
   isLoading = false;
   constructor(
-    private readonly formBuilder: FormBuilder,
+    private readonly formBuilder: UntypedFormBuilder,
     private readonly authService: AuthService,
     private readonly messageService: NzMessageService,
   ) { }

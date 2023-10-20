@@ -3,7 +3,7 @@ import { tap, finalize } from 'rxjs/operators';
 import { ActivatedRoute, Router } from '@angular/router';
 import { StorageService } from './../../../../core/services/storage/storage.service';
 import { AuthService } from './../../../../core/services/auth/auth.service';
-import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder, Validators, UntypedFormControl } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { environment } from '@env';
 
@@ -13,13 +13,13 @@ import { environment } from '@env';
   styleUrls: ['./reset-password.component.css']
 })
 export class ResetPasswordComponent implements OnInit {
-  resetForm: FormGroup;
+  resetForm: UntypedFormGroup;
   isLoading = false;
   verifyToken: string;
   email: string;
 
   constructor(
-    private readonly formBuilder: FormBuilder,
+    private readonly formBuilder: UntypedFormBuilder,
     private readonly authService: AuthService,
     private readonly storageService: StorageService,
     private readonly activatedRoute: ActivatedRoute,
@@ -40,7 +40,7 @@ export class ResetPasswordComponent implements OnInit {
     });
   }
 
-  confirmationValidator = (control: FormControl) => {
+  confirmationValidator = (control: UntypedFormControl) => {
     if (!control.value) {
       return { required: true };
     }

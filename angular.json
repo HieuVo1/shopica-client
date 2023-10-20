@@ -125,7 +125,6 @@
       }
     }
   },
-  "defaultProject": "SHOPPICA-ANGULAR-CLIENT-WEB",
   "cli": {
     "analytics": "54216b54-dd15-49c4-8cf3-dc05796fcdd4"
   }

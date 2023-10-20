@@ -4,7 +4,7 @@ import { environment } from '@env';
 import { tap, finalize } from 'rxjs/operators';
 import { AuthService } from './../../../core/services/auth/auth.service';
 import { Component, OnInit, Input, Output, EventEmitter, SimpleChanges } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-reset-password-drawer',
@@ -15,11 +15,11 @@ export class ResetPasswordDrawerComponent implements OnInit {
   @Input() isOpenResetPasswordDrawer = false;
   @Output() closeResetPasswordDrawerEvent = new EventEmitter<boolean>();
   @Output() openLoginDrawerEvent = new EventEmitter<boolean>();
-  firstForm: FormGroup;
+  firstForm: UntypedFormGroup;
 
   isLoading = false;
   constructor(
-    private readonly formBuilder: FormBuilder,
+    private readonly formBuilder: UntypedFormBuilder,
     private readonly authService: AuthService,
     private readonly storageService: StorageService,
     private readonly messageService: NzMessageService,

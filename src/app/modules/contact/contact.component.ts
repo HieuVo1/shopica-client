@@ -1,6 +1,6 @@
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { finalize } from 'rxjs/operators';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { ContactService } from '../../core/services/contact/contact.service';
 import { Router } from '@angular/router';
@@ -12,9 +12,9 @@ import { Router } from '@angular/router';
 })
 export class ContactComponent implements OnInit {
   isLoading = false;
-  contactForm!: FormGroup;
+  contactForm!: UntypedFormGroup;
   constructor(
-    private readonly formBuilder: FormBuilder,
+    private readonly formBuilder: UntypedFormBuilder,
     private readonly contactService: ContactService,
     private readonly router: Router,
     private readonly messageService: NzMessageService

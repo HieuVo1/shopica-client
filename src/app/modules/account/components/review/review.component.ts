@@ -4,7 +4,7 @@ import { finalize } from 'rxjs/operators';
 import { CommentService } from '@core/services/comment/comment.service';
 import { OrderDetailResponse } from './../../../../core/model/order/order-detail-response';
 import { Product } from '@core/model/product/product';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
@@ -17,10 +17,10 @@ export class ReviewComponent implements OnInit {
   @Input() orderDetail: OrderDetailResponse;
   @Input() isVisible: boolean;
   @Output() isVisibleChange = new EventEmitter<boolean>();
-  reviewForm: FormGroup;
+  reviewForm: UntypedFormGroup;
   isLoading = false;
   constructor(
-    private readonly formBuilder: FormBuilder,
+    private readonly formBuilder: UntypedFormBuilder,
     private readonly commentService: CommentService,
     private readonly messageService: NzMessageService
   ) { }

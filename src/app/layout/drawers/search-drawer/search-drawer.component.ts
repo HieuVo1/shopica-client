@@ -1,6 +1,6 @@
 import { CartItemOptions } from '@shared/modules/cart-item/models/cart-item-options.model';
 import { CartItem } from '@core/model/cart/cart-item';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
@@ -11,7 +11,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 export class SearchDrawerComponent implements OnInit {
   @Input() isOpenSearchDrawer = false;
   @Output() closeSearchDrawerEvent = new EventEmitter<boolean>();
-  searchForm: FormGroup;
+  searchForm: UntypedFormGroup;
   isLoading = false;
 
   listCartItem: CartItem[] = [
@@ -49,7 +49,7 @@ export class SearchDrawerComponent implements OnInit {
     size: 'small'
   };
   constructor(
-    private readonly formBuilder: FormBuilder,
+    private readonly formBuilder: UntypedFormBuilder,
 
   ) { }
 
