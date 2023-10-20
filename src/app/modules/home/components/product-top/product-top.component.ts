@@ -41,13 +41,13 @@ export class ProductBestSellerComponent implements OnInit {
   };
 
   ngOnInit() {
-    this.productService.getListNewArrival(0, 15).subscribe(res => {
-      if (res.code === 'OK') {
-        this.newArrivalProduct = res.data.content.slice(0, 4);
-        this.saleProduct = res.data.content.slice(5, 9);
-        this.trendingProduct = res.data.content.slice(10, 14);
-      }
-    })
+    // this.productService.getListNewArrival(0, 15).subscribe(res => {
+    //   if (res.code === 'OK') {
+    //     this.newArrivalProduct = res.data.content.slice(0, 4);
+    //     this.saleProduct = res.data.content.slice(5, 9);
+    //     this.trendingProduct = res.data.content.slice(10, 14);
+    //   }
+    // })
   }
 
 }

@@ -28,7 +28,7 @@ export class BlogDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
-      this.getBlogById(params.blogId);
+      // this.getBlogById(params.blogId);
     });
   }
 

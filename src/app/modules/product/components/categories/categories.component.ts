@@ -45,11 +45,11 @@ export class CategoriesComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.getListCategory();
+    // this.getListCategory();
 
-    this.activatedRoute.params.subscribe((params) => {
-      this.currentCategory = params.category;
-    });
+    // this.activatedRoute.params.subscribe((params) => {
+    //   this.currentCategory = params.category;
+    // });
   }
 
   selectCategory(category: Category) {

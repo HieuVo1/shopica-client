@@ -19,14 +19,14 @@ export class WishListComponent implements OnInit {
 
   ngOnInit(): void {
     this.loaderService.showLoader('wishlist');
-    this.productService.getWishList({ pageIndex: 0, pageSize: 12 })
-      .pipe(
-        finalize(() => this.loaderService.hideLoader('wishlist'))
-      ).subscribe(res => {
-        if (res.code == 'OK') {
-          this.listProduct = res.data.content;
-        }
-      });
+    // this.productService.getWishList({ pageIndex: 0, pageSize: 12 })
+    //   .pipe(
+    //     finalize(() => this.loaderService.hideLoader('wishlist'))
+    //   ).subscribe(res => {
+    //     if (res.code == 'OK') {
+    //       this.listProduct = res.data.content;
+    //     }
+    //   });
   }
 
   removeFromWishList(id: number) {

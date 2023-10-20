@@ -28,8 +28,8 @@ export class StoreInfoComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getCancelAndCompleteOrderState(this.storeId);
-    this.getStoreInfo(this.storeId);
+    // this.getCancelAndCompleteOrderState(this.storeId);
+    // this.getStoreInfo(this.storeId);
   }
 
   getCancelAndCompleteOrderState(storeId: number) {

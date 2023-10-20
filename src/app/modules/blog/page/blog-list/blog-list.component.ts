@@ -25,22 +25,22 @@ export class BlogListComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.activatedRoute.queryParams.pipe(
-      switchMap(queryParams => {
-        this.pageIndex = 1;
-        this.total = 0;
-        this.currentCategory = queryParams.category;
-        this.loaderService.showLoader('filter-blog')
-        return this.blogService.getAllBlog(this.pageIndex, this.pageSize, queryParams.category)
-      }),
-      delay(2000)
-    ).subscribe(res => {
-      if (res.code == "OK") {
-        this.listBlog = res.data.content;
-        this.total = res.data.totalElements;
-      }
-      this.loaderService.hideLoader('filter-blog');
-    });
+    // this.activatedRoute.queryParams.pipe(
+    //   switchMap(queryParams => {
+    //     this.pageIndex = 1;
+    //     this.total = 0;
+    //     this.currentCategory = queryParams.category;
+    //     this.loaderService.showLoader('filter-blog')
+    //     return this.blogService.getAllBlog(this.pageIndex, this.pageSize, queryParams.category)
+    //   }),
+    //   delay(2000)
+    // ).subscribe(res => {
+    //   if (res.code == "OK") {
+    //     this.listBlog = res.data.content;
+    //     this.total = res.data.totalElements;
+    //   }
+    //   this.loaderService.hideLoader('filter-blog');
+    // });
 
   }
 

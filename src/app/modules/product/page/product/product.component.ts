@@ -44,33 +44,33 @@ export class ProductComponent implements OnInit {
 
   ngOnInit(): void {
 
-    combineLatest([
-      this.activatedRoute.params,
-      this.activatedRoute.queryParams
-    ])
-      .pipe(
-        switchMap((data) => {
-          this.getCategory(data[0]);
-          this.getFilter(data[1]);
-          this.loaderService.showLoader('product');
-          this.loaded = false;
-          return this.productService.getListProduct(this.productOptions, this.baseParams);
-        }),
-      ).subscribe(res => {
-        if (res.code === 'OK') {
-          this.listProduct = res.data.content;
-          this.total = res.data.totalElements;
-        }
-        this.loaderService.hideLoader('product');
-        this.loaded = true;
-      });
+    // combineLatest([
+    //   this.activatedRoute.params,
+    //   this.activatedRoute.queryParams
+    // ])
+    //   .pipe(
+    //     switchMap((data) => {
+    //       this.getCategory(data[0]);
+    //       this.getFilter(data[1]);
+    //       this.loaderService.showLoader('product');
+    //       this.loaded = false;
+    //       return this.productService.getListProduct(this.productOptions, this.baseParams);
+    //     }),
+    //   ).subscribe(res => {
+    //     if (res.code === 'OK') {
+    //       this.listProduct = res.data.content;
+    //       this.total = res.data.totalElements;
+    //     }
+    //     this.loaderService.hideLoader('product');
+    //     this.loaded = true;
+    //   });
 
-    if (window.innerWidth <= 992) {
-      this.productCol = 12;
-    }
-    else {
-      this.productCol = 6;
-    }
+    // if (window.innerWidth <= 992) {
+    //   this.productCol = 12;
+    // }
+    // else {
+    //   this.productCol = 6;
+    // }
   }
 
   getCategory(params) {
@@ -116,15 +116,15 @@ export class ProductComponent implements OnInit {
   }
 
   loadListProduct() {
-    this.loaderService.showLoader('product');
-    this.productService.getListProduct(this.productOptions, this.baseParams).pipe(
-      finalize(() => this.loaderService.hideLoader('product'))
-    ).subscribe(res => {
-      if (res.code === 'OK') {
-        this.listProduct = res.data.content;
-        this.total = res.data.totalElements;
-      }
-    });
+    // this.loaderService.showLoader('product');
+    // this.productService.getListProduct(this.productOptions, this.baseParams).pipe(
+    //   finalize(() => this.loaderService.hideLoader('product'))
+    // ).subscribe(res => {
+    //   if (res.code === 'OK') {
+    //     this.listProduct = res.data.content;
+    //     this.total = res.data.totalElements;
+    //   }
+    // });
   }
 
   changePageIndex(page: number) {

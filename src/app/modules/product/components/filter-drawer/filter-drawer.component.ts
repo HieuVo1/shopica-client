@@ -62,20 +62,20 @@ export class FilterDrawerComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.loadAllBrand();
-    this.loadAllColor();
-    this.loadAllSize();
+    // this.loadAllBrand();
+    // this.loadAllColor();
+    // this.loadAllSize();
 
-    this.activatedRoute.queryParams.subscribe(params => {
-      this.selectedColor = params.color;
-      this.selectedSize = params.size;
-      this.selectedBrand = params.brand;
-      this.selectedPrice = params.price;
-    });
+    // this.activatedRoute.queryParams.subscribe(params => {
+    //   this.selectedColor = params.color;
+    //   this.selectedSize = params.size;
+    //   this.selectedBrand = params.brand;
+    //   this.selectedPrice = params.price;
+    // });
 
-    this.activatedRoute.params.subscribe((data) => {
-      this.currentCategory = data.category;
-    });
+    // this.activatedRoute.params.subscribe((data) => {
+    //   this.currentCategory = data.category;
+    // });
   }
 
   closeMenu() {

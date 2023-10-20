@@ -38,10 +38,10 @@ export class BlogListComponent implements OnInit {
   };
 
   ngOnInit(): void {
-    this.blogService.getAllBlog(1, 6).subscribe(res => {
-      if (res.code === 'OK') {
-        this.listBlog = res.data.content;
-      }
-    });
+    // this.blogService.getAllBlog(1, 6).subscribe(res => {
+    //   if (res.code === 'OK') {
+    //     this.listBlog = res.data.content;
+    //   }
+    // });
   }
 }
