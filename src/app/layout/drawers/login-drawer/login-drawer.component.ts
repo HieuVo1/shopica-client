@@ -12,7 +12,6 @@ import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms
 import { finalize, map, tap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { NzMessageService } from 'ng-zorro-antd/message';
-import { SocialAuthService, GoogleLoginProvider, FacebookLoginProvider } from 'angularx-social-login';
 import { environment } from '@env';
 
 @Component({
@@ -20,6 +19,7 @@ import { environment } from '@env';
   templateUrl: './login-drawer.component.html',
   styleUrls: ['./login-drawer.component.css']
 })
+
 export class LoginDrawerComponent implements OnInit {
   @Output() openRegisterDrawerEvent = new EventEmitter<boolean>();
   @Output() openResetPasswordDrawerEvent = new EventEmitter<boolean>();
@@ -31,7 +31,6 @@ export class LoginDrawerComponent implements OnInit {
     private readonly formBuilder: UntypedFormBuilder,
     private readonly authService: AuthService,
     private readonly messageService: NzMessageService,
-    private readonly socialAuthService: SocialAuthService,
     private readonly storageService: StorageService,
     private readonly shareService: ShareService,
     private readonly cartService: CartService,
@@ -50,9 +49,6 @@ export class LoginDrawerComponent implements OnInit {
       this.isVisible = false;
     });
 
-    this.socialAuthService.authState.subscribe((user) => {
-      this.socialLogin(user);
-    });
 
     if (this.authService.isAuthenticated()) {
       this.getCustomerDetail();
@@ -168,14 +164,6 @@ export class LoginDrawerComponent implements OnInit {
         this.shareService.customerInfoChangeEvent(res.data);
       }
     });
-  }
-
-  signInWithGoogle(): void {
-    this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID);
-  }
-
-  signInWithFacebook(): void {
-    this.socialAuthService.signIn(FacebookLoginProvider.PROVIDER_ID);
   }
 
 

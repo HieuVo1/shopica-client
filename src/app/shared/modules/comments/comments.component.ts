@@ -9,7 +9,6 @@ import { NzMessageService } from 'ng-zorro-antd/message';
 import { StorageService } from '@core/services/storage/storage.service';
 import { environment } from '@env';
 import { JwtService } from '@core/services/jwt/jwt.service';
-import { identifierModuleUrl } from '@angular/compiler';
 
 @Component({
   selector: 'app-comments',

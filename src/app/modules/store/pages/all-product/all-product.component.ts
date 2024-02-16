@@ -1,13 +1,12 @@
 import { LoaderService } from '@shared/modules/loader/loader.service';
 import { Product } from '../../../../core/model/product/product';
-import { Component, OnInit } from '@angular/core';
 import { ShareService } from '@core/services/share/share.service';
 import { ProductService } from '@core/services/product/product.service';
 import { CategoryService } from '@core/services/category/category.service';
 import { Category } from '@core/model/category/category';
 import { finalize } from 'rxjs/operators';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Route } from '@angular/compiler/src/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-all-product',
@@ -29,7 +28,17 @@ export class AllProductComponent implements OnInit {
 
   }
   ngOnInit(): void {
-    this.loadCategoryByStore();
+    this.categories = [{
+      id: 0,
+      categoryName: "Trouser",
+      image: "",
+    },
+    {
+      id: 2,
+      categoryName: "Shirt",
+      image: "",
+    }]
+    // this.loadCategoryByStore();
 
     this.activatedRoute.queryParams.subscribe(qp => {
       this.currentCategoryName = qp.category;

@@ -9,8 +9,6 @@ import { BaseParams } from '@core/model/base-params';
 import { Category } from '@core/model/category/category';
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { Product } from '@core/model/product/product';
-import { parseI18nMeta } from '@angular/compiler/src/render3/view/i18n/meta';
-import { stringify } from '@angular/compiler/src/util';
 import { combineLatest } from 'rxjs';
 
 @Component({

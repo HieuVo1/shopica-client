@@ -34,7 +34,7 @@ export class ModalService {
   }
 
   closeQuickViewEvent() {
-    this.closeQuickView.next();
+    this.closeQuickView.next(false);
   }
 
   openQuickShopEvent(product: Product) {
@@ -42,7 +42,7 @@ export class ModalService {
   }
 
   closeQuickShopEvent() {
-    this.closeQuickShop.next();
+    this.closeQuickShop.next(false);
   }
 
   openCartDrawerEvent() {
@@ -50,7 +50,7 @@ export class ModalService {
   }
 
   closeCartDrawerEvent() {
-    this.closeCartDrawer.next();
+    this.closeCartDrawer.next(false);
   }
 
   openLoginDrawerEvent() {
@@ -58,7 +58,7 @@ export class ModalService {
   }
 
   closeLoginDrawerEvent() {
-    this.closeLoginDrawer.next();
+    this.closeLoginDrawer.next(false);
   }
 
   openMenuDrawerEvent() {
@@ -66,6 +66,6 @@ export class ModalService {
   }
 
   closeMenuDrawerEvent() {
-    this.closeMenuDrawer.next();
+    this.closeMenuDrawer.next(false);
   }
 }

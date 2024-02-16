@@ -2,6 +2,7 @@ import { ProductService } from '@core/services/product/product.service';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { Product } from '@core/model/product/product';
 import { Component, OnInit } from '@angular/core';
+import { listProduct } from '@core/services/product/product';
 
 @Component({
   selector: 'app-product-top',
@@ -48,6 +49,10 @@ export class ProductBestSellerComponent implements OnInit {
     //     this.trendingProduct = res.data.content.slice(10, 14);
     //   }
     // })
+
+    this.newArrivalProduct = listProduct;
+    this.saleProduct = listProduct;
+    this.trendingProduct = listProduct;
   }
 
 }

@@ -48,11 +48,13 @@ export class ProductCardComponent implements OnInit {
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes.product !== undefined) {
-      this.listSize = getListSize(changes.product.currentValue.productDetails);
-      this.listColor = getListColor(changes.product.currentValue.productDetails);
+      this.listSize = [{ id: 1, sizeName: "S" }]
+      this.listColor = [{ id: 1, colorCode: "#ff4d4f", colorName: "red" }]
       this.colorSelected = this.listColor[0];
       this.image = changes.product.currentValue.productImages[0].image;
       this.sizes = this.listSize.map(x => x.sizeName).join(', ');
+      console.log(changes.product.currentValue);
+
 
     }
   }

@@ -7,6 +7,7 @@ import { Injectable } from '@angular/core';
 import { BaseParams } from '@core/model/base-params';
 import { of } from 'rxjs';
 import { ProductSort } from '@core/model/product/product-sort';
+import { listProduct } from './product';
 
 @Injectable({
   providedIn: 'root'
@@ -22,6 +23,8 @@ export class ProductService {
     const params = new HttpParams()
       .append('page', `${baseParams.pageIndex}`)
       .append('pageSize', `${baseParams.pageSize}`);
+
+    return of(listProduct);
 
     return this.httpClient.post(`${environment.productServiceUrl}/api/product/product-all-store`, productOption,
       { params }).pipe(
@@ -39,6 +42,7 @@ export class ProductService {
     let productOptions = new ProductOptions();
     productOptions.sortType = ProductSort.NEW_OLD;
 
+    return of(listProduct);
     return this.httpClient.post(`${environment.productServiceUrl}/api/product/product-all-store`, productOptions,
       { params }).pipe(
         catchError(error => {
@@ -123,6 +127,8 @@ export class ProductService {
       params.append('page', `${baseParams.pageIndex}`);
       params.append('pageSize', `${baseParams.pageSize}`);
     }
+
+    return of(listProduct);
 
     return this.httpClient.get(`${environment.productServiceUrl}/api/wish-list`, { params }).pipe(
       catchError(error => {
